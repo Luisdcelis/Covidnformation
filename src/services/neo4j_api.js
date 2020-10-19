@@ -38,7 +38,6 @@ export const updateUser = async (data) => {
 };
 
 export const deleteUser = async (data) => {
-  console.log("los dato:", data);
   const res = await api.delete(`/users/${data.username}`);
   return res.data;
 };
@@ -46,4 +45,19 @@ export const deleteUser = async (data) => {
 export const getAdmin = async (data) => {
   const res = await api.get(`/users/admin/${data.username}`);
   return res.data;
+};
+
+export const getCloseCircle = async (data) => {
+  const res = await api.get(`/users/closecircle/${data.username}`);
+  return res.data.result;
+};
+
+export const updateCloseCircle = async (data) => {
+  const res = await api.put(`/users/updateCC/${data.username}`, data);
+  return res.data.result;
+};
+
+export const updateInContact = async (data) => {
+  const res = await api.put(`/users/updateIC/${data.username}`, data);
+  return res.data.result;
 };

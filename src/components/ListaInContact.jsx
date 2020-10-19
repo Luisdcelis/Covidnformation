@@ -1,12 +1,14 @@
 import {
   Box,
   Button,
+  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
   Divider,
+  FormControlLabel,
   IconButton,
 } from "@material-ui/core";
 import React, { useState } from "react";
@@ -14,17 +16,14 @@ import FilaTabla from "../components/FilaTabla";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-const Pruebas = () => {
-  const [usernames, setUsernames] = useState(["luisdcelis", "ertio"]);
+const ListaInContact = ({ filas, setFilas }) => {
   const [open, setOpen] = useState(false);
   const [fila, setFila] = useState(null);
-  console.log(usernames);
 
   return (
     <>
-      <h1>Pruebas</h1>
-      <Divider style={{ margin: 20 }} />
-      {usernames.map((i, idk) => {
+      <Divider style={{ margin: "20px 0px" }} />
+      {filas.map((i, idk) => {
         return (
           <>
             <Box display="flex" flexDirection="row" margin={"0px 20px"}>
@@ -40,11 +39,28 @@ const Pruebas = () => {
               </Box>
               <Box flexGrow={1}>
                 <FilaTabla
-                  username={i}
+                  username={i.username}
                   setUsername={(value) => {
-                    usernames[idk] = value;
-                    setUsernames([...usernames]);
+                    filas[idk].username = value;
+                    setFilas([...filas]);
                   }}
+                />
+              </Box>
+              <Box mt={3} ml={3}>
+                <FormControlLabel
+                  value="bot"
+                  control={
+                    <Checkbox
+                      color="primary"
+                      checked={i.anon}
+                      onChange={() => {
+                        i.anon = !i.anon;
+                        setFilas([...filas]);
+                      }}
+                    />
+                  }
+                  label="Anónimo"
+                  labelPlacement="end"
                 />
               </Box>
             </Box>
@@ -54,12 +70,14 @@ const Pruebas = () => {
       })}
 
       <Box ml={2.5}>
-        <IconButton onClick={() => setUsernames([...usernames, null])}>
+        <IconButton
+          onClick={() => setFilas([...filas, { username: null, anon: false }])}
+        >
           <AddCircleIcon fontSize="large" />
         </IconButton>
       </Box>
 
-      <Divider style={{ margin: 20 }} />
+      <Divider style={{ margin: "20px 0px" }} />
 
       <Dialog
         open={open}
@@ -88,15 +106,15 @@ const Pruebas = () => {
           </Button>
           <Button
             onClick={() => {
-              const aux = usernames.filter((item) => item !== usernames[fila]);
-              setUsernames([...aux]);
+              const aux = filas.filter((item) => item !== filas[fila]);
+              setFilas([...aux]);
               setFila(null);
               setOpen(false);
             }}
             color="primary"
             autoFocus
           >
-            Acepar
+            Aceptar
           </Button>
         </DialogActions>
       </Dialog>
@@ -104,4 +122,4 @@ const Pruebas = () => {
   );
 };
 
-export default Pruebas;
+export default ListaInContact;

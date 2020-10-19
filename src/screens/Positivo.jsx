@@ -6,12 +6,24 @@ import {
   FormControlLabel,
   makeStyles,
   Paper,
+  Snackbar,
   Typography,
 } from "@material-ui/core";
 import React, { useState } from "react";
 import NavBarCovid from "../components/NavBarCovid";
 import InfoIcon from "@material-ui/icons/Info";
 import MaterialTabla from "../components/MaterialTabla";
+import Lista from "../components/Lista";
+import MuiAlert from "@material-ui/lab/Alert";
+import { useUser } from "../context/UserContext";
+import ListaInContact from "../components/ListaInContact";
+import moment from "moment";
+import { updateInContact } from "../services/neo4j_api";
+import { useHistory } from "react-router-dom";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +41,30 @@ const useStyles = makeStyles((theme) => ({
 const Positivo = () => {
   const classes = useStyles();
   const [confirmar, setConfirmar] = useState(false);
-  const [data, setData] = useState([
-    { username: "luisdcelis", name: "Luis de Celis", city: "San Fernando" },
-  ]);
+  const [openBueno, setOpenBueno] = useState(false);
+  const [openMalo, setOpenMalo] = useState(false);
+  const [msg, setMsg] = useState("");
+  const { user, removeUser, setUser } = useUser();
+  const history = useHistory();
+  const [filas, setFilas] = useState(
+    user.closeCircle.map((i) => ({ username: i, anon: false }))
+  );
+  let today = moment().format("YYYY-MM-DD");
+
+  const notificar = async () => {
+    if (filas.find((i) => i.username === user.username) !== undefined) {
+      setMsg("No te puedes incluir a ti mismo");
+      setOpenMalo(true);
+    } else {
+      const data = { ...user, date: today, incontact: filas };
+      await updateInContact(data);
+      setOpenBueno(true);
+      setTimeout(() => {
+        history.push("/home");
+      }, 1500);
+    }
+  };
+
   return (
     <>
       <NavBarCovid />
@@ -70,13 +103,9 @@ const Positivo = () => {
         <br />
         <br />
         <br />
-        <Box
-          display="flex"
-          justifyContent="center"
-          style={{ margin: "0px 10%" }}
-        >
-          <MaterialTabla />
-        </Box>
+        <Paper elevation={3} style={{ margin: "-10px 160px" }}>
+          <ListaInContact filas={filas} setFilas={(value) => setFilas(value)} />
+        </Paper>
 
         <br />
         <br />
@@ -107,7 +136,7 @@ const Positivo = () => {
               variant="contained"
               color="primary"
               disabled={!confirmar}
-              href="/home"
+              onClick={() => notificar()}
             >
               notificar
             </Button>
@@ -118,6 +147,38 @@ const Positivo = () => {
         <br />
         <br />
       </Box>
+      <Snackbar
+        open={openBueno}
+        autoHideDuration={4000}
+        onClose={() => {
+          setOpenBueno(false);
+        }}
+      >
+        <Alert
+          onClose={() => {
+            setOpenBueno(false);
+          }}
+          severity="success"
+        >
+          Los usuarios han sido notificados
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={openMalo}
+        autoHideDuration={4000}
+        onClose={() => {
+          setOpenMalo(false);
+        }}
+      >
+        <Alert
+          onClose={() => {
+            setOpenMalo(false);
+          }}
+          severity="error"
+        >
+          {msg}
+        </Alert>
+      </Snackbar>
     </>
   );
 };

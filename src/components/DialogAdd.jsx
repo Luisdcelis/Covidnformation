@@ -39,13 +39,13 @@ const validationSchema = yup.object({
   prov: yup
     .string()
     .matches(
-      "^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]*$",
+      "^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF ]*$",
       "Introduce una provincia válida"
     ),
   city: yup
     .string()
     .matches(
-      "^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]*$",
+      "^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF ]*$",
       "Introduce una ciudad válida"
     ),
 });
@@ -70,7 +70,6 @@ const DialogAdd = ({ open, setOpen }) => {
   const [msgSB, setMsgSB] = useState("");
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     const { repassword, ...data } = values;
 
     (async () => {

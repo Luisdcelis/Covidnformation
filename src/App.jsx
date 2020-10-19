@@ -25,6 +25,7 @@ function App() {
       setRedirect(user !== null);
     }
   }, [isLoading, user]);
+
   return (
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={theme}>

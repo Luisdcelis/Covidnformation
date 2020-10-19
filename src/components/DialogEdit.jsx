@@ -62,7 +62,6 @@ const DialogEdit = ({ open, setOpen }) => {
   const [msgSB, setMsgSB] = useState("");
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     const { repassword, ...data } = values;
 
     (async () => {
@@ -75,7 +74,6 @@ const DialogEdit = ({ open, setOpen }) => {
             throw new Error("Este email ya esta registrado");
           }
         }
-        console.log("data:", data);
         await updateUser(data);
         setOpenSucc(true);
         setTimeout(() => {
@@ -92,8 +90,6 @@ const DialogEdit = ({ open, setOpen }) => {
       }
     })();
   };
-
-  console.log(username);
 
   return (
     <>

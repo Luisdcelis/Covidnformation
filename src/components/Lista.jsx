@@ -14,16 +14,13 @@ import FilaTabla from "../components/FilaTabla";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-const Pruebas = () => {
-  const [usernames, setUsernames] = useState(["luisdcelis", "ertio"]);
+const Lista = ({ usernames, setUsernames }) => {
   const [open, setOpen] = useState(false);
   const [fila, setFila] = useState(null);
-  console.log(usernames);
 
   return (
     <>
-      <h1>Pruebas</h1>
-      <Divider style={{ margin: 20 }} />
+      <Divider style={{ margin: "20px 0px" }} />
       {usernames.map((i, idk) => {
         return (
           <>
@@ -59,7 +56,7 @@ const Pruebas = () => {
         </IconButton>
       </Box>
 
-      <Divider style={{ margin: 20 }} />
+      <Divider style={{ margin: "20px 0px" }} />
 
       <Dialog
         open={open}
@@ -96,7 +93,7 @@ const Pruebas = () => {
             color="primary"
             autoFocus
           >
-            Acepar
+            Aceptar
           </Button>
         </DialogActions>
       </Dialog>
@@ -104,4 +101,4 @@ const Pruebas = () => {
   );
 };
 
-export default Pruebas;
+export default Lista;

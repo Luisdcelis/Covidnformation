@@ -11,6 +11,7 @@ import {
   Divider,
   IconButton,
   Link,
+  Paper,
   Popover,
   Snackbar,
   TextField,
@@ -28,8 +29,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Logo1 from "../assets/Logo1.png";
 import { useUser } from "../context/UserContext";
-import { updateLocationUser } from "../services/neo4j_api";
+import { updateCloseCircle, updateLocationUser } from "../services/neo4j_api";
 import MaterialTabla from "./MaterialTabla";
+import Lista from "./Lista";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,7 +79,10 @@ function NavBarCovid() {
   const [cityError, setCityError] = useState("");
   const [provError, setProvError] = useState("");
   const [openSB, setOpenSB] = useState(false);
+  const [openSBMalo, setOpenSBMalo] = useState(false);
   const [msgSB, setMsgSB] = useState("");
+  const [msgSBMalo, setMsgSBMalo] = useState("");
+  const [usernames, setUsernames] = useState(user.closeCircle);
 
   const alphabetic = /^([^0-9]*)$/;
 
@@ -109,6 +114,18 @@ function NavBarCovid() {
       setTimeout(() => {
         setOpenDialog(false);
       }, 1000);
+    }
+    setUsernames([...new Set(usernames)]);
+    if (usernames.includes(user.username)) {
+      setOpenSB(false);
+      setMsgSBMalo("No te puedes incluir a ti mismo en tu circulo cercano");
+      setOpenSBMalo(true);
+    } else {
+      if (usernames !== user.closeCircle) {
+        user.closeCircle = usernames;
+        setUser(user);
+        updateCloseCircle(user);
+      }
     }
   };
 
@@ -262,7 +279,12 @@ function NavBarCovid() {
           </DialogContentText>
           <Divider />
           <br />
-          <MaterialTabla />
+          <Paper elevation={5}>
+            <Lista
+              usernames={usernames}
+              setUsernames={(value) => setUsernames(value)}
+            />
+          </Paper>
         </DialogContent>
         <Box className={classes.toolbar}>
           <DialogActions>
@@ -304,6 +326,22 @@ function NavBarCovid() {
           severity="success"
         >
           {msgSB}
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={openSBMalo}
+        autoHideDuration={4000}
+        onClose={() => {
+          setOpenSBMalo(false);
+        }}
+      >
+        <Alert
+          onClose={() => {
+            setOpenSBMalo(false);
+          }}
+          severity="error"
+        >
+          {msgSBMalo}
         </Alert>
       </Snackbar>
     </>

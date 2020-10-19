@@ -67,7 +67,6 @@ const DialogDelete = ({ open, setOpen }) => {
 
     (async () => {
       try {
-        console.log("deleteando ", data.username);
         deleteUser({ username: data.username });
         setOpenSucc(true);
         setTimeout(() => {
@@ -77,8 +76,6 @@ const DialogDelete = ({ open, setOpen }) => {
       } catch (e) {}
     })();
   };
-
-  console.log(username);
 
   return (
     <>

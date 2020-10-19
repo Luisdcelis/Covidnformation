@@ -16,7 +16,12 @@ import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import Logo1 from "../assets/Logo1.png";
 import { useUser } from "../context/UserContext";
-import { getAdmin, getUser, getUsernames } from "../services/neo4j_api";
+import {
+  getAdmin,
+  getCloseCircle,
+  getUser,
+  getUsernames,
+} from "../services/neo4j_api";
 
 const bcrypt = require("bcryptjs");
 
@@ -76,6 +81,9 @@ export default function Login() {
         } else {
           if (un.result.includes(values.username)) {
             const dataUser = await getUser({ username: values.username });
+            const closeCircle = await getCloseCircle({
+              username: values.username,
+            });
             const comp = await bcrypt.compare(
               values.password,
               dataUser.result.password
@@ -83,7 +91,7 @@ export default function Login() {
             if (comp) {
               // guardar usuario en el context
 
-              setUser(dataUser.result);
+              setUser({ ...dataUser.result, closeCircle: closeCircle });
               // history.push("/home");
               history.go(0);
             } else {
