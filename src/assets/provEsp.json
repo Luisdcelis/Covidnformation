@@ -1,0 +1,366 @@
+[
+  {
+    "CCAA": "Castilla - La Mancha",
+    "Cod_CCAA": 8,
+    "Provincia": "Cuenca",
+    "Texto": "Cuenca",
+    "Codigo": 16
+  },
+  {
+    "CCAA": "Galicia",
+    "Cod_CCAA": 12,
+    "Provincia": "Ourense",
+    "Texto": "Orense",
+    "Codigo": 32
+  },
+  {
+    "CCAA": "Galicia",
+    "Cod_CCAA": 12,
+    "Provincia": "Lugo",
+    "Texto": "Lugo",
+    "Codigo": 27
+  },
+  {
+    "CCAA": "Aragón",
+    "Cod_CCAA": 2,
+    "Provincia": "Zaragoza",
+    "Texto": "Zaragoza",
+    "Codigo": 50
+  },
+  {
+    "CCAA": "Rioja, La",
+    "Cod_CCAA": 17,
+    "Provincia": "La Rioja",
+    "Texto": "La Rioja",
+    "Codigo": 26
+  },
+  {
+    "CCAA": "Andalucía",
+    "Cod_CCAA": 1,
+    "Provincia": "Córdoba",
+    "Texto": "Córdoba",
+    "Codigo": 14
+  },
+  {
+    "CCAA": "Castilla - La Mancha",
+    "Cod_CCAA": 8,
+    "Provincia": "Toledo",
+    "Texto": "Toledo",
+    "Codigo": 45
+  },
+  {
+    "CCAA": "Castilla y León",
+    "Cod_CCAA": 7,
+    "Provincia": "Ávila",
+    "Texto": "Ávila",
+    "Codigo": 5
+  },
+  {
+    "CCAA": "Asturias, Principado de",
+    "Cod_CCAA": 3,
+    "Provincia": "Asturias",
+    "Texto": "Asturias",
+    "Codigo": 33
+  },
+  {
+    "CCAA": "Andalucía",
+    "Cod_CCAA": 1,
+    "Provincia": "Almería",
+    "Texto": "Almería",
+    "Codigo": 4
+  },
+  {
+    "CCAA": "Comunidad de Madrid",
+    "Cod_CCAA": 13,
+    "Provincia": "Madrid",
+    "Texto": "Madrid",
+    "Codigo": 28
+  },
+  {
+    "CCAA": "Castilla y León",
+    "Cod_CCAA": 7,
+    "Provincia": "Salamanca",
+    "Texto": "Salamanca",
+    "Codigo": 37
+  },
+  {
+    "CCAA": "Andalucía",
+    "Cod_CCAA": 1,
+    "Provincia": "Sevilla",
+    "Texto": "Sevilla",
+    "Codigo": 41
+  },
+  {
+    "CCAA": "Aragón",
+    "Cod_CCAA": 2,
+    "Provincia": "Teruel",
+    "Texto": "Teruel",
+    "Codigo": 44
+  },
+  {
+    "CCAA": "Illes Balears",
+    "Cod_CCAA": 4,
+    "Provincia": "Illes Balears",
+    "Texto": "Islas Baleares",
+    "Codigo": 7
+  },
+  {
+    "CCAA": "Castilla y León",
+    "Cod_CCAA": 7,
+    "Provincia": "Soria",
+    "Texto": "Soria",
+    "Codigo": 42
+  },
+  {
+    "CCAA": "Galicia",
+    "Cod_CCAA": 12,
+    "Provincia": "Pontevedra",
+    "Texto": "Pontevedra",
+    "Codigo": 36
+  },
+  {
+    "CCAA": "Aragón",
+    "Cod_CCAA": 2,
+    "Provincia": "Huesca",
+    "Texto": "Huesca",
+    "Codigo": 22
+  },
+  {
+    "CCAA": "Castilla - La Mancha",
+    "Cod_CCAA": 8,
+    "Provincia": "Guadalajara",
+    "Texto": "Guadalajara",
+    "Codigo": 19
+  },
+  {
+    "CCAA": "Andalucía",
+    "Cod_CCAA": 1,
+    "Provincia": "Huelva",
+    "Texto": "Huelva",
+    "Codigo": 21
+  },
+  {
+    "CCAA": "Castilla - La Mancha",
+    "Cod_CCAA": 8,
+    "Provincia": "Ciudad Real",
+    "Texto": "Ciudad Real",
+    "Codigo": 13
+  },
+  {
+    "CCAA": "Melilla",
+    "Cod_CCAA": 19,
+    "Provincia": "Melilla",
+    "Texto": "Melilla",
+    "Codigo": 52
+  },
+  {
+    "CCAA": "Castilla y León",
+    "Cod_CCAA": 7,
+    "Provincia": "Segovia",
+    "Texto": "Segovia",
+    "Codigo": 40
+  },
+  {
+    "CCAA": "Andalucía",
+    "Cod_CCAA": 1,
+    "Provincia": "Málaga",
+    "Texto": "Málaga",
+    "Codigo": 29
+  },
+  {
+    "CCAA": "Andalucía",
+    "Cod_CCAA": 1,
+    "Provincia": "Jaén",
+    "Texto": "Jaén",
+    "Codigo": 23
+  },
+  {
+    "CCAA": "Comunitat Valenciana",
+    "Cod_CCAA": 10,
+    "Provincia": "València",
+    "Texto": "Valencia",
+    "Codigo": 46
+  },
+  {
+    "CCAA": "Comunitat Valenciana",
+    "Cod_CCAA": 10,
+    "Provincia": "Alacant",
+    "Texto": "Alicante",
+    "Codigo": 3
+  },
+  {
+    "CCAA": "Cataluña",
+    "Cod_CCAA": 9,
+    "Provincia": "Lleida",
+    "Texto": "Lleida",
+    "Codigo": 25
+  },
+  {
+    "CCAA": "Canarias",
+    "Cod_CCAA": 5,
+    "Provincia": "Las Palmas",
+    "Texto": "Las Palmas",
+    "Codigo": 35
+  },
+  {
+    "CCAA": "Extremadura",
+    "Cod_CCAA": 11,
+    "Provincia": "Badajoz",
+    "Texto": "Badajoz",
+    "Codigo": 6
+  },
+  {
+    "CCAA": "Castilla y León",
+    "Cod_CCAA": 7,
+    "Provincia": "Valladolid",
+    "Texto": "Valladolid",
+    "Codigo": 47
+  },
+  {
+    "CCAA": "Galicia",
+    "Cod_CCAA": 12,
+    "Provincia": "A Coruña",
+    "Texto": "La Coruña",
+    "Codigo": 15
+  },
+  {
+    "CCAA": "Comunitat Valenciana",
+    "Cod_CCAA": 10,
+    "Provincia": "Castelló",
+    "Texto": "Castellón",
+    "Codigo": 12
+  },
+  {
+    "CCAA": "Andalucía",
+    "Cod_CCAA": 1,
+    "Provincia": "Cádiz",
+    "Texto": "Cádiz",
+    "Codigo": 11
+  },
+  {
+    "CCAA": "País Vasco",
+    "Cod_CCAA": 16,
+    "Provincia": "Araba",
+    "Texto": "Álava",
+    "Codigo": 1
+  },
+  {
+    "CCAA": "Cantabria",
+    "Cod_CCAA": 6,
+    "Provincia": "Cantabria",
+    "Texto": "Cantabria",
+    "Codigo": 39
+  },
+  {
+    "CCAA": "Región de Murcia",
+    "Cod_CCAA": 14,
+    "Provincia": "Murcia",
+    "Texto": "Murcia",
+    "Codigo": 30
+  },
+  {
+    "CCAA": "Cataluña",
+    "Cod_CCAA": 9,
+    "Provincia": "Girona",
+    "Texto": "Gerona",
+    "Codigo": 17
+  },
+  {
+    "CCAA": "País Vasco",
+    "Cod_CCAA": 16,
+    "Provincia": "Gipuzcoa",
+    "Texto": "Guipúzcoa",
+    "Codigo": 20
+  },
+  {
+    "CCAA": "Castilla - La Mancha",
+    "Cod_CCAA": 8,
+    "Provincia": "Albacete",
+    "Texto": "Albacete",
+    "Codigo": 2
+  },
+  {
+    "CCAA": "País Vasco",
+    "Cod_CCAA": 16,
+    "Provincia": "Bizkaia",
+    "Texto": "Vizcaya",
+    "Codigo": 48
+  },
+  {
+    "CCAA": "Castilla y León",
+    "Cod_CCAA": 7,
+    "Provincia": "Burgos",
+    "Texto": "Burgos",
+    "Codigo": 9
+  },
+  {
+    "CCAA": "Comunidad Foral de Navarra",
+    "Cod_CCAA": 15,
+    "Provincia": "Navarra",
+    "Texto": "Navarra",
+    "Codigo": 31
+  },
+  {
+    "CCAA": "Castilla y León",
+    "Cod_CCAA": 7,
+    "Provincia": "Palencia",
+    "Texto": "Palencia",
+    "Codigo": 34
+  },
+  {
+    "CCAA": "Cataluña",
+    "Cod_CCAA": 9,
+    "Provincia": "Tarragona",
+    "Texto": "Tarragona",
+    "Codigo": 43
+  },
+  {
+    "CCAA": "Canarias",
+    "Cod_CCAA": 5,
+    "Provincia": "Santa Cruz de Tenerife",
+    "Texto": "Santa Cruz de Tenerife",
+    "Codigo": 38
+  },
+  {
+    "CCAA": "Andalucía",
+    "Cod_CCAA": 1,
+    "Provincia": "Granada",
+    "Texto": "Granada",
+    "Codigo": 18
+  },
+  {
+    "CCAA": "Ceuta",
+    "Cod_CCAA": 18,
+    "Provincia": "Ceuta",
+    "Texto": "Ceuta",
+    "Codigo": 51
+  },
+  {
+    "CCAA": "Castilla y León",
+    "Cod_CCAA": 7,
+    "Provincia": "León",
+    "Texto": "León",
+    "Codigo": 24
+  },
+  {
+    "CCAA": "Cataluña",
+    "Cod_CCAA": 9,
+    "Provincia": "Barcelona",
+    "Texto": "Barcelona",
+    "Codigo": 8
+  },
+  {
+    "CCAA": "Castilla y León",
+    "Cod_CCAA": 7,
+    "Provincia": "Zamora",
+    "Texto": "Zamora",
+    "Codigo": 49
+  },
+  {
+    "CCAA": "Extremadura",
+    "Cod_CCAA": 11,
+    "Provincia": "Cáceres",
+    "Texto": "Cáceres",
+    "Codigo": 10
+  }
+]
