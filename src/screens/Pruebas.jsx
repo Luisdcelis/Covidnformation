@@ -1,105 +1,24 @@
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Divider,
-  IconButton,
-} from "@material-ui/core";
-import React, { useState } from "react";
-import FilaTabla from "../components/FilaTabla";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-import DeleteIcon from "@material-ui/icons/Delete";
+import { Box, Divider } from "@material-ui/core";
+import React from "react";
+import NotifAnon from "../components/NotifAnon";
+import NotifDesAnon from "../components/NotifDesAnon";
+import NotifNoAnon from "../components/NotifNoAnon";
 
 const Pruebas = () => {
-  const [usernames, setUsernames] = useState(["luisdcelis", "ertio"]);
-  const [open, setOpen] = useState(false);
-  const [fila, setFila] = useState(null);
-  console.log(usernames);
+  const relation = { date: "2020-10-20" };
+  const sender = { username: "ertio", name: "nosekien" };
+  const receiver = { username: "lolz", name: "nose" };
 
   return (
     <>
       <h1>Pruebas</h1>
-      <Divider style={{ margin: 20 }} />
-      {usernames.map((i, idk) => {
-        return (
-          <>
-            <Box display="flex" flexDirection="row" margin={"0px 20px"}>
-              <Box mt={1}>
-                <IconButton
-                  onClick={() => {
-                    setOpen(true);
-                    setFila(idk);
-                  }}
-                >
-                  <DeleteIcon fontSize="large" />
-                </IconButton>
-              </Box>
-              <Box flexGrow={1}>
-                <FilaTabla
-                  username={i}
-                  setUsername={(value) => {
-                    usernames[idk] = value;
-                    setUsernames([...usernames]);
-                  }}
-                />
-              </Box>
-            </Box>
-            <Divider style={{ margin: 20 }} />
-          </>
-        );
-      })}
-
-      <Box ml={2.5}>
-        <IconButton onClick={() => setUsernames([...usernames, null])}>
-          <AddCircleIcon fontSize="large" />
-        </IconButton>
+      <Box>
+        <NotifAnon relation={relation} sender={sender} receiver={receiver} />
+        <Divider />
+        <NotifNoAnon relation={relation} sender={sender} receiver={receiver} />
+        <Divider />
+        <NotifDesAnon relation={relation} sender={sender} receiver={receiver} />
       </Box>
-
-      <Divider style={{ margin: 20 }} />
-
-      <Dialog
-        open={open}
-        onClose={() => {
-          setFila(null);
-          setOpen(false);
-        }}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">Eliminar fila</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            ¿Está seguro de que desea eliminar esta fila?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => {
-              setFila(null);
-              setOpen(false);
-            }}
-            color="primary"
-          >
-            Cancelar
-          </Button>
-          <Button
-            onClick={() => {
-              const aux = usernames.filter((item) => item !== usernames[fila]);
-              setUsernames([...aux]);
-              setFila(null);
-              setOpen(false);
-            }}
-            color="primary"
-            autoFocus
-          >
-            Acepar
-          </Button>
-        </DialogActions>
-      </Dialog>
     </>
   );
 };

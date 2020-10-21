@@ -24,7 +24,12 @@ const Lista = ({ usernames, setUsernames }) => {
       {usernames.map((i, idk) => {
         return (
           <>
-            <Box display="flex" flexDirection="row" margin={"0px 20px"}>
+            <Box
+              display="flex"
+              flexDirection="row"
+              margin={"0px 20px"}
+              key={idk}
+            >
               <Box mt={1}>
                 <IconButton
                   onClick={() => {

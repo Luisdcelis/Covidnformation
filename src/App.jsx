@@ -26,6 +26,10 @@ function App() {
     }
   }, [isLoading, user]);
 
+  if (user !== null) {
+    console.log("user, ", user);
+  }
+
   return (
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={theme}>

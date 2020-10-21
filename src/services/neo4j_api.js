@@ -52,6 +52,38 @@ export const getCloseCircle = async (data) => {
   return res.data.result;
 };
 
+export const getNotifications = async (data) => {
+  const res = await api.get(`/users/notifications/${data.username}`);
+  return res.data.result;
+};
+
+export const getPetitions = async (data) => {
+  const res = await api.get(`/users/petitions/${data.username}`);
+  return res.data.result;
+};
+
+export const deleteNotification = async (data) => {
+  const res = await api.delete(
+    `/users/notifications/${data.receiver}/${data.sender}`
+  );
+  return res.data.result;
+};
+
+export const deletePetition = async (data) => {
+  const res = await api.delete(`/users/petitions/${data.from}/${data.to}`);
+  return res.data.result;
+};
+
+export const createPetition = async (data) => {
+  const res = await api.post(`/users/petitions/${data.from}/${data.to}`);
+  return res.data.result;
+};
+
+export const createInContact = async (data) => {
+  const res = await api.post(`/users/InContact/${data.from}/${data.to}`, data);
+  return res.data.result;
+};
+
 export const updateCloseCircle = async (data) => {
   const res = await api.put(`/users/updateCC/${data.username}`, data);
   return res.data.result;

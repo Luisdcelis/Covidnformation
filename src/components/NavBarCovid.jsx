@@ -32,6 +32,9 @@ import { useUser } from "../context/UserContext";
 import { updateCloseCircle, updateLocationUser } from "../services/neo4j_api";
 import MaterialTabla from "./MaterialTabla";
 import Lista from "./Lista";
+import Notifications from "./Notifications";
+import EmailIcon from "@material-ui/icons/Email";
+import Petitions from "./Petitions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,9 +74,10 @@ function Alert(props) {
 function NavBarCovid() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl2, setAnchorEl2] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
   const { user, removeUser, setUser } = useUser();
-  const [notificacion, setNotificacion] = useState(true);
+
   const [city, setCity] = useState(user.city);
   const [prov, setProv] = useState(user.prov);
   const [cityError, setCityError] = useState("");
@@ -89,8 +93,10 @@ function NavBarCovid() {
   const history = useHistory();
 
   const handleClick = (event) => {
-    setNotificacion(false);
     setAnchorEl(event.currentTarget);
+  };
+  const handleClick2 = (event) => {
+    setAnchorEl2(event.currentTarget);
   };
 
   const acceptChanges = () => {
@@ -130,7 +136,9 @@ function NavBarCovid() {
   };
 
   const open = Boolean(anchorEl);
+  const open2 = Boolean(anchorEl2);
   const id = open ? "simple-popover" : undefined;
+  const id2 = open2 ? "simple-popover" : undefined;
 
   return (
     <>
@@ -152,17 +160,48 @@ function NavBarCovid() {
             </Link>
           </Box>
           <Box>
-            <IconButton onClick={handleClick} className={classes.link}>
-              <div className={classes.badge}>
-                <Badge
-                  color="secondary"
-                  variant="dot"
-                  invisible={!notificacion}
-                >
-                  <NotificationsIcon />
-                </Badge>
-              </div>
-            </IconButton>
+            <Tooltip title="Solicitudes de identidad" arrow>
+              <IconButton onClick={handleClick2}>
+                <div className={classes.badge}>
+                  <Badge
+                    color="secondary"
+                    variant="dot"
+                    invisible={user.petitions.length === 0}
+                  >
+                    <EmailIcon />
+                  </Badge>
+                </div>
+              </IconButton>
+            </Tooltip>
+            <Popover
+              id={id2}
+              open={open2}
+              anchorEl={anchorEl2}
+              onClose={() => setAnchorEl2(null)}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+            >
+              <Petitions user={user} cerrar={() => setAnchorEl(null)} />
+            </Popover>
+            <Tooltip title="Notificaciones" arrow>
+              <IconButton onClick={handleClick} className={classes.link}>
+                <div className={classes.badge}>
+                  <Badge
+                    color="secondary"
+                    variant="dot"
+                    invisible={user.notifications.length === 0}
+                  >
+                    <NotificationsIcon />
+                  </Badge>
+                </div>
+              </IconButton>
+            </Tooltip>
             <Popover
               id={id}
               open={open}
@@ -177,9 +216,7 @@ function NavBarCovid() {
                 horizontal: "center",
               }}
             >
-              <Typography className={classes.popoverTypo}>
-                The content of the Popover.
-              </Typography>
+              <Notifications user={user} cerrar={() => setAnchorEl(null)} />
             </Popover>
 
             <Button
@@ -190,13 +227,15 @@ function NavBarCovid() {
             >
               COVID
             </Button>
-            <IconButton
-              onClick={() => {
-                setOpenDialog(true);
-              }}
-            >
-              <AccountCircleIcon fontSize="large" />
-            </IconButton>
+            <Tooltip title="Mi perfil" arrow>
+              <IconButton
+                onClick={() => {
+                  setOpenDialog(true);
+                }}
+              >
+                <AccountCircleIcon fontSize="large" />
+              </IconButton>
+            </Tooltip>
           </Box>
         </Toolbar>
       </AppBar>

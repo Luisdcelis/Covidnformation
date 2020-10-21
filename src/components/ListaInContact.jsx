@@ -25,7 +25,7 @@ const ListaInContact = ({ filas, setFilas }) => {
       <Divider style={{ margin: "20px 0px" }} />
       {filas.map((i, idk) => {
         return (
-          <>
+          <Box key={idk}>
             <Box display="flex" flexDirection="row" margin={"0px 20px"}>
               <Box mt={1}>
                 <IconButton
@@ -65,7 +65,7 @@ const ListaInContact = ({ filas, setFilas }) => {
               </Box>
             </Box>
             <Divider style={{ margin: 20 }} />
-          </>
+          </Box>
         );
       })}
 

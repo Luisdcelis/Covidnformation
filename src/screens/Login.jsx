@@ -21,6 +21,8 @@ import {
   getCloseCircle,
   getUser,
   getUsernames,
+  getNotifications,
+  getPetitions,
 } from "../services/neo4j_api";
 
 const bcrypt = require("bcryptjs");
@@ -84,6 +86,13 @@ export default function Login() {
             const closeCircle = await getCloseCircle({
               username: values.username,
             });
+            const notifications = await getNotifications({
+              username: values.username,
+            });
+            const petitions = await getPetitions({
+              username: values.username,
+            });
+
             const comp = await bcrypt.compare(
               values.password,
               dataUser.result.password
@@ -91,7 +100,12 @@ export default function Login() {
             if (comp) {
               // guardar usuario en el context
 
-              setUser({ ...dataUser.result, closeCircle: closeCircle });
+              setUser({
+                ...dataUser.result,
+                closeCircle: closeCircle,
+                notifications: notifications,
+                petitions: petitions,
+              });
               // history.push("/home");
               history.go(0);
             } else {
