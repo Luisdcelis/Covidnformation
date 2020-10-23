@@ -25,6 +25,26 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
+const contEqUn = (v, un) => {
+  let cont = 0;
+  v.map((i, idx) => {
+    if (i.username === un) {
+      cont = cont + 1;
+    }
+  });
+  return cont;
+};
+
+const hayUnRepetidos = (v) => {
+  let tamoBn = true;
+  v.map((i, idx) => {
+    if (contEqUn(v, i.username) > 1) {
+      tamoBn = false;
+    }
+  });
+  return !tamoBn;
+};
+
 const useStyles = makeStyles((theme) => ({
   root: {
     ...theme.typography.overline,
@@ -52,16 +72,21 @@ const Positivo = () => {
   let today = moment().format("YYYY-MM-DD");
 
   const notificar = async () => {
-    if (filas.find((i) => i.username === user.username) !== undefined) {
-      setMsg("No te puedes incluir a ti mismo");
+    if (hayUnRepetidos(filas)) {
+      setMsg("No puede haber usuarios repetidos");
       setOpenMalo(true);
     } else {
-      const data = { ...user, date: today, incontact: filas };
-      await updateInContact(data);
-      setOpenBueno(true);
-      setTimeout(() => {
-        history.push("/home");
-      }, 1500);
+      if (filas.find((i) => i.username === user.username) !== undefined) {
+        setMsg("No te puedes incluir a ti mismo");
+        setOpenMalo(true);
+      } else {
+        const data = { ...user, date: today, incontact: filas };
+        await updateInContact(data);
+        setOpenBueno(true);
+        setTimeout(() => {
+          history.push("/home");
+        }, 1500);
+      }
     }
   };
 

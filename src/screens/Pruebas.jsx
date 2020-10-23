@@ -9,6 +9,38 @@ const Pruebas = () => {
   const sender = { username: "ertio", name: "nosekien" };
   const receiver = { username: "lolz", name: "nose" };
 
+  const lol = [
+    { un: "lol", anon: true },
+    { un: "ercojne", anon: false },
+    { un: "lol", anon: false },
+  ];
+  const lol2 = [
+    { un: "lol", anon: true },
+    { un: "ercojne", anon: false },
+    { un: "lol2", anon: false },
+  ];
+
+  const contEqUn = (v, un) => {
+    let cont = 0;
+    v.map((i, idx) => {
+      if (i.un === un) {
+        cont = cont + 1;
+      }
+    });
+    return cont;
+  };
+
+  const hayUnRepetidos = (v) => {
+    let tamoBn = true;
+    v.map((i, idx) => {
+      if (contEqUn(v, i.un) > 1) {
+        tamoBn = false;
+      }
+    });
+    return !tamoBn;
+  };
+  console.log(hayUnRepetidos(lol2));
+
   return (
     <>
       <h1>Pruebas</h1>
