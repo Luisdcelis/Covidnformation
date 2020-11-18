@@ -29,12 +29,12 @@ export const getDataCovidGlobal = async (fecha) => {
   return res.data.total;
 };
 
-const api_mapas = axios.create({
+const api_stats = axios.create({
   baseURL:
     "https://cors-anywhere.herokuapp.com/https://covid19tracking.narrativa.com/feed_en_graphs.json",
 });
 
-export const getMapa = async () => {
-  const res = await api_mapas.get();
+export const getStats = async () => {
+  const res = await api_stats.get();
   return res.data.data.post[0];
 };

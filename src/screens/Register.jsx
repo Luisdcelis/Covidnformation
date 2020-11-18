@@ -217,7 +217,7 @@ const Register = () => {
                 disabled={isSubmitting}
                 onClick={submitForm}
               >
-                Entrar
+                Registrarme
               </Button>
             </>
           )}

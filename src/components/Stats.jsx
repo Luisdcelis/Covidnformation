@@ -20,7 +20,7 @@ import React, { useEffect, useState } from "react";
 import {
   getDataCovidGlobal,
   getDataCovidSpain,
-  getMapa,
+  getStats,
 } from "../services/api";
 import moment from "moment";
 import DateFnsUtils from "@date-io/date-fns";
@@ -50,7 +50,7 @@ const Stats = () => {
     (async () => {
       setTimeout(setDataSpa(null), 4000);
       const res = await getDataCovidSpain(fecha);
-      const resImg = await getMapa();
+      const resImg = await getStats();
       setDataImage(resImg);
       setDataSpa(res);
     })();
@@ -60,7 +60,7 @@ const Stats = () => {
     (async () => {
       setDataGlo(null);
       const res = await getDataCovidGlobal(fecha);
-      const resImg = await getMapa();
+      const resImg = await getStats();
       setDataGlo(res);
       setDataImage(resImg);
     })();
